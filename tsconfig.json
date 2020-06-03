@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "importHelpers": true,
+    "module": "commonjs",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "target": "ES2018",
+    "types": ["node"]
+  },
+  "include": ["./src/**/*", "./examples/**/*", "./tests/**/*"]
+}
