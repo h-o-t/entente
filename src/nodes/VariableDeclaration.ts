@@ -22,7 +22,7 @@ export class VariableDeclaration {
         {
           actual,
           expected,
-          showDiff: false
+          showDiff: false,
         },
         this.name
       );

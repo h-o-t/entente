@@ -10,7 +10,7 @@ test({
     assert(project instanceof ts.Project);
     const sourceFiles = project.getSourceFiles();
     assert(sourceFiles.length === 2);
-  }
+  },
 });
 
 test({
@@ -20,7 +20,7 @@ test({
     assert(project instanceof ts.Project);
     const sourceFiles = project.getSourceFiles();
     assert(sourceFiles.length === 2);
-  }
+  },
 });
 
 test({
@@ -30,7 +30,7 @@ test({
     assert(project instanceof ts.Project);
     const sourceFiles = project.getSourceFiles();
     assert(sourceFiles.length === 2);
-  }
+  },
 });
 
 test({
@@ -40,5 +40,5 @@ test({
     assert(project instanceof ts.Project);
     const sourceFiles = project.getSourceFiles();
     assert(sourceFiles.length === 2);
-  }
+  },
 });

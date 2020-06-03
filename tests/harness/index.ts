@@ -20,8 +20,8 @@ const formatOptions = {
     diffAdded: chalk.greenBright,
     diffRemoved: chalk.redBright,
     errorMessage: chalk.yellowBright,
-    errorStack: chalk.cyanBright
-  }
+    errorStack: chalk.cyanBright,
+  },
 };
 
 export async function run(): Promise<number> {

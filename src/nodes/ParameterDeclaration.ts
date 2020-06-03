@@ -12,7 +12,7 @@ export class ParameterDeclaration {
         {
           actual: this._node.getType().getText(this._node),
           expected: "object",
-          showDiff: false
+          showDiff: false,
         },
         this.isObject
       );
@@ -28,7 +28,7 @@ export class ParameterDeclaration {
         {
           actual: false,
           expected: true,
-          showDiff: false
+          showDiff: false,
         },
         this.isOptional
       );
@@ -44,7 +44,7 @@ export class ParameterDeclaration {
         {
           actual: true,
           expected: false,
-          showDiff: false
+          showDiff: false,
         },
         this.isNotOptional
       );

@@ -13,7 +13,7 @@ export class TypeArray {
         {
           actual,
           expected,
-          showDiff: false
+          showDiff: false,
         },
         this.atLeast
       );
@@ -23,13 +23,13 @@ export class TypeArray {
 
   /** Assert that every type in the type array is an object type. */
   isObject(msg = "Expected types to be an object."): this {
-    if (!this._types.every(t => t.isObject())) {
+    if (!this._types.every((t) => t.isObject())) {
       throw new AssertionError(
         msg,
         {
           actual: this._types[0].getText(),
           expected: "object",
-          showDiff: false
+          showDiff: false,
         },
         this.isObject
       );
@@ -39,13 +39,13 @@ export class TypeArray {
 
   /** Assert that every type in the type array is a string type. */
   isString(msg = "Expected types to be a string."): this {
-    if (!this._types.every(t => t.isString())) {
+    if (!this._types.every((t) => t.isString())) {
       throw new AssertionError(
         msg,
         {
           actual: this._types[0].getText(),
           expected: "string",
-          showDiff: false
+          showDiff: false,
         },
         this.isString
       );

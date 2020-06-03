@@ -6,7 +6,7 @@
   "author": "Kitson Kelly <me@kitsonkelly.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=10.16.0"
+    "node": ">=12.18.0"
   },
   "files": [
     "lib/**/*"
@@ -22,22 +22,29 @@
   "dependencies": {
     "assertion-error": "1.1.0",
     "assertion-error-formatter": "3.0.0",
-    "chalk": "3.0.0",
+    "chalk": "4.0.0",
     "diff": "4.0.2",
-    "ts-morph": "7.0.0",
-    "tslib": "1.11.1"
+    "ts-morph": "7.1.0",
+    "tslib": "2.0.0"
   },
   "devDependencies": {
-    "@types/chai": "4.2.10",
-    "@types/node": "10.17.13",
-    "@typescript-eslint/eslint-plugin": "2.23.0",
-    "@typescript-eslint/parser": "2.23.0",
+    "@types/chai": "4.2.11",
+    "@types/node": "12.12.42",
+    "@typescript-eslint/eslint-plugin": "3.1.0",
+    "@typescript-eslint/parser": "3.1.0",
     "chai": "4.2.0",
-    "eslint": "6.8.0",
-    "eslint-config-airbnb-typescript-prettier": "1.4.2",
-    "prettier": "1.19.1",
+    "eslint": "7.1.0",
+    "eslint-config-airbnb-typescript-prettier": "2.1.1",
+    "husky": "4.2.5",
+    "prettier": "2.0.5",
+    "pretty-quick": "2.0.1",
     "rimraf": "3.0.2",
-    "ts-node": "8.6.2",
-    "typescript": "3.8.3"
+    "ts-node": "8.10.2",
+    "typescript": "3.9.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }

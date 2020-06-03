@@ -10,9 +10,9 @@ test({
     const sourceFile = project.getSourceFiles()[0];
     assert.deepEqual(assertSourceFile(sourceFile).imports.specifiers, [
       "./mod3",
-      "./mod4"
+      "./mod4",
     ]);
-  }
+  },
 });
 
 test({
@@ -20,10 +20,8 @@ test({
   fn() {
     const project = createProject("./tests/fixtures/imports.ts");
     const sourceFile = project.getSourceFiles()[0];
-    assertSourceFile(sourceFile)
-      .imports.includes("mod")
-      .length(2);
-  }
+    assertSourceFile(sourceFile).imports.includes("mod").length(2);
+  },
 });
 
 test({
@@ -31,10 +29,8 @@ test({
   fn() {
     const project = createProject("./tests/fixtures/imports.ts");
     const sourceFile = project.getSourceFiles()[0];
-    assertSourceFile(sourceFile)
-      .imports.includes(/\/mod/)
-      .length(2);
-  }
+    assertSourceFile(sourceFile).imports.includes(/\/mod/).length(2);
+  },
 });
 
 test({
@@ -46,5 +42,5 @@ test({
       () => assertSourceFile(sourceFile).imports.includes("bar"),
       `Expected an import to match "bar".`
     );
-  }
+  },
 });

@@ -34,7 +34,7 @@ export class Exports {
           {
             actual: false,
             expected: true,
-            showDiff: false
+            showDiff: false,
           },
           this.namedExport
         );
@@ -53,7 +53,7 @@ export class Exports {
           {
             actual: false,
             expected: true,
-            showDiff: false
+            showDiff: false,
           },
           this.namedExport
         );

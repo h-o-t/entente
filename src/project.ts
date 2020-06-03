@@ -13,7 +13,7 @@ export function createProject(root: string): Project {
     allowJs: true,
     checkJs: true,
     noEmit: true,
-    resolveJsonModule: true
+    resolveJsonModule: true,
   };
 
   if (isConfig(root)) {

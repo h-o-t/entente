@@ -9,7 +9,7 @@ test({
     const project = createProject("./tests/fixtures/exportClass.js");
     const sourceFiles = project.getSourceFiles();
     assertSourceFile(sourceFiles[0]).classes.length(1);
-  }
+  },
 });
 
 test({
@@ -18,7 +18,7 @@ test({
     const project = createProject("./tests/fixtures/exportClass.js");
     const sourceFiles = project.getSourceFiles();
     assertSourceFile(sourceFiles[0]).classes.declarations[0].isDefaultExport();
-  }
+  },
 });
 
 test({
@@ -30,7 +30,7 @@ test({
       sourceFiles[0]
     ).classes.declarations[0].member("qux");
     assert.lengthOf(members, 1, "should have only one member named 'qux'");
-  }
+  },
 });
 
 test({
@@ -42,7 +42,7 @@ test({
       sourceFiles[0]
     ).classes.declarations[0].member("qux");
     members[0].isMethodLike();
-  }
+  },
 });
 
 test({
@@ -54,7 +54,7 @@ test({
       sourceFiles[0]
     ).classes.declarations[0].member("qux");
     members[0].isProperty();
-  }
+  },
 });
 
 test({
@@ -66,7 +66,7 @@ test({
       sourceFiles[0]
     ).classes.declarations[0].member("quux");
     members[0].isMethod();
-  }
+  },
 });
 
 test({
@@ -77,9 +77,6 @@ test({
     const members = assertSourceFile(
       sourceFiles[0]
     ).classes.declarations[0].member("qux");
-    members[0]
-      .isProperty()
-      .hasInitializer()
-      .isFunctionLike();
-  }
+    members[0].isProperty().hasInitializer().isFunctionLike();
+  },
 });

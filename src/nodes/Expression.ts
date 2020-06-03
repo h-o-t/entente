@@ -15,7 +15,7 @@ export class Expression {
         {
           actual,
           expected: "FunctionLikeDeclaration",
-          showDiff: false
+          showDiff: false,
         },
         this.isFunctionLike
       );

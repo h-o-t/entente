@@ -6,7 +6,7 @@ export class Imports {
   constructor(private _declarations: ts.ImportDeclaration[]) {}
 
   get declarations(): ImportDeclaration[] {
-    return this._declarations.map(id => new ImportDeclaration(id));
+    return this._declarations.map((id) => new ImportDeclaration(id));
   }
 
   get sourceFileNodes(): Record<string, ts.SourceFile | undefined> {
@@ -20,7 +20,7 @@ export class Imports {
   }
 
   get specifiers(): string[] {
-    return this._declarations.map(id =>
+    return this._declarations.map((id) =>
       id.getModuleSpecifier().getLiteralText()
     );
   }
@@ -29,7 +29,7 @@ export class Imports {
     value: string | RegExp,
     msg = `Expected an import to match "${String(value)}".`
   ): Imports {
-    const includeArray = this._declarations.filter(id => {
+    const includeArray = this._declarations.filter((id) => {
       const specifier = id.getModuleSpecifier().getLiteralText();
       return typeof value === "string"
         ? specifier.includes(value)
@@ -49,7 +49,7 @@ export class Imports {
         {
           actual,
           expected,
-          showDiff: true
+          showDiff: true,
         },
         this.length
       );

@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
     "importHelpers": true,
+    "lib": ["ES2019"],
     "module": "commonjs",
     "noEmit": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "ES2018",
+    "target": "ES2019",
     "types": ["node"]
   },
   "include": ["./src/**/*", "./examples/**/*", "./tests/**/*"]

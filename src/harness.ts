@@ -55,8 +55,8 @@ const formatOptions = {
     diffAdded: chalk.greenBright,
     diffRemoved: chalk.redBright,
     errorMessage: chalk.yellowBright,
-    errorStack: chalk.cyanBright
-  }
+    errorStack: chalk.cyanBright,
+  },
 };
 
 /** A guard for return values from tests. */
@@ -105,7 +105,7 @@ export async function run(options: RunOptions = {}): Promise<RunReturn> {
       }
       tests.push({
         name: spec.name,
-        fail: false
+        fail: false,
       });
     } catch (e) {
       fail++;
@@ -113,7 +113,7 @@ export async function run(options: RunOptions = {}): Promise<RunReturn> {
       tests.push({
         name: spec.name,
         fail: true,
-        errorString
+        errorString,
       });
       if (!silent) {
         console.log(
@@ -160,7 +160,7 @@ export function test(item: TestFn | TestSpec): void {
     typeof item === "function"
       ? {
           name: item.name ?? `test ${++uid}`,
-          fn: item
+          fn: item,
         }
       : item
   );

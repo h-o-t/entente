@@ -7,7 +7,7 @@ export class ClassDeclarations {
 
   /** The declarations of classes as an array. */
   get declarations(): ClassDeclaration[] {
-    return this._declarations.map(cd => new ClassDeclaration(cd));
+    return this._declarations.map((cd) => new ClassDeclaration(cd));
   }
 
   /** Asserts that there is a class with a name that matches the supplied
@@ -16,7 +16,7 @@ export class ClassDeclarations {
     value: string | RegExp,
     msg = `Expected a class to match "${String(value)}".`
   ): ClassDeclarations {
-    const includeArray = this._declarations.filter(cd => {
+    const includeArray = this._declarations.filter((cd) => {
       const name = cd.getName();
       if (!name) {
         return false;
@@ -40,7 +40,7 @@ export class ClassDeclarations {
         {
           actual,
           expected,
-          showDiff: true
+          showDiff: true,
         },
         this.length
       );

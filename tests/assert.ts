@@ -9,7 +9,7 @@ test({
     const project = createProject("./tests/fixtures/exports.ts");
     const sourceFiles = project.getSourceFiles();
     assert(assertSourceFile(sourceFiles[0]));
-  }
+  },
 });
 
 test({
@@ -18,7 +18,7 @@ test({
     const project = createProject("./tests/fixtures/exports.ts");
     const sourceFiles = project.getSourceFiles();
     assertSourceFile(sourceFiles[0]).filePath(/\/fixtures\/exports\.ts$/);
-  }
+  },
 });
 
 test({
@@ -31,7 +31,7 @@ test({
       .default()
       .length(1)
       .declarations[0].isVariableDeclaration();
-  }
+  },
 });
 
 test({
@@ -44,7 +44,7 @@ test({
       .namedExport("bar")
       .length(1)
       .declarations[0].isFunctionLike();
-  }
+  },
 });
 
 test({
@@ -57,7 +57,7 @@ test({
       .namedExport(/qu+x/)
       .length(1)
       .declarations[0].isVariableDeclaration();
-  }
+  },
 });
 
 test({
@@ -68,5 +68,5 @@ test({
     const sourceFile = assertSourceFile(sourceFiles[0]);
     const exports = [...sourceFile.exports];
     assert(exports.length === 6);
-  }
+  },
 });

@@ -21,7 +21,7 @@ export class ExportedDeclaration<
         {
           actual,
           expected: "FunctionLikeDeclaration",
-          showDiff: false
+          showDiff: false,
         },
         this.isFunctionLike
       );
@@ -38,7 +38,7 @@ export class ExportedDeclaration<
         {
           actual,
           expected: "VariableDeclaration",
-          showDiff: false
+          showDiff: false,
         },
         this.isVariableDeclaration
       );

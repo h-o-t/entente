@@ -11,7 +11,7 @@ export class ExportedDeclarationsArray {
   get declarations(): ExportedDeclaration[] {
     if (!this._declarations) {
       this._declarations = this._exportedDeclarations.map(
-        ed => new ExportedDeclaration(ed)
+        (ed) => new ExportedDeclaration(ed)
       );
     }
     return this._declarations;
@@ -27,7 +27,7 @@ export class ExportedDeclarationsArray {
         {
           actual,
           expected,
-          showDiff: true
+          showDiff: true,
         },
         this.length
       );
@@ -35,7 +35,7 @@ export class ExportedDeclarationsArray {
     return this;
   }
 
-  *[Symbol.iterator]() {
+  *[Symbol.iterator](): IterableIterator<ExportedDeclaration> {
     let idx = 0;
     while (this._exportedDeclarations[idx]) {
       yield new ExportedDeclaration(this._exportedDeclarations[idx]);

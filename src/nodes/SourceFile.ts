@@ -36,7 +36,7 @@ export class SourceFile {
         {
           actual,
           expected,
-          showDiff: false
+          showDiff: false,
         },
         this.filePath
       );

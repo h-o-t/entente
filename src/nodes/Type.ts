@@ -12,14 +12,14 @@ export class Type<T extends ts.ts.Type = ts.ts.Type> {
 
   /** Assert the type is an array type. */
   isArray(msg?: string): this {
-    if (!this._types.every(t => t.isArray())) {
+    if (!this._types.every((t) => t.isArray())) {
       const actual = this._type.getText();
       throw new AssertionError(
         `Expected an array type, actual "${actual}".` ?? msg,
         {
           actual,
           expected: "Array<any>",
-          showDiff: false
+          showDiff: false,
         },
         this.isArray
       );
@@ -29,14 +29,14 @@ export class Type<T extends ts.ts.Type = ts.ts.Type> {
 
   /** Assert the type is an object type. */
   isObject(msg?: string): this {
-    if (!this._types.every(t => t.isObject())) {
+    if (!this._types.every((t) => t.isObject())) {
       const actual = this._type.getText();
       throw new AssertionError(
         `Expected an object type, actual "${this._type.getText()}".` ?? msg,
         {
           actual,
           expected: "object",
-          showDiff: false
+          showDiff: false,
         },
         this.isObject
       );
@@ -48,7 +48,7 @@ export class Type<T extends ts.ts.Type = ts.ts.Type> {
   get properties(): Properties {
     if (!this._properties) {
       this._properties = new Properties(
-        this._types.map(t => t.getProperties())
+        this._types.map((t) => t.getProperties())
       );
     }
     return this._properties;

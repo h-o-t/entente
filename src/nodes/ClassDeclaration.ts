@@ -27,7 +27,7 @@ export class ClassDeclaration {
     value: string | RegExp,
     msg = `Expected the class to have a member that matches "${String(value)}".`
   ): ClassMember[] {
-    const includeArray = this._node.getInstanceMembers().filter(im => {
+    const includeArray = this._node.getInstanceMembers().filter((im) => {
       const name = im.getName();
       if (!name) {
         return false;
@@ -39,7 +39,7 @@ export class ClassDeclaration {
     if (!includeArray.length) {
       throw new AssertionError(msg, undefined, this.member);
     }
-    return includeArray.map(im => new ClassMember(im));
+    return includeArray.map((im) => new ClassMember(im));
   }
 
   /** Asserts that the class has an static member that matches the supplied
@@ -50,7 +50,7 @@ export class ClassDeclaration {
       value
     )}".`
   ): ClassMember[] {
-    const includeArray = this._node.getStaticMembers().filter(im => {
+    const includeArray = this._node.getStaticMembers().filter((im) => {
       const name = im.getName();
       if (!name) {
         return false;
@@ -62,6 +62,6 @@ export class ClassDeclaration {
     if (!includeArray.length) {
       throw new AssertionError(msg, undefined, this.member);
     }
-    return includeArray.map(im => new ClassMember(im));
+    return includeArray.map((im) => new ClassMember(im));
   }
 }

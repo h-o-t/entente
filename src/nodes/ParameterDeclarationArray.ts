@@ -17,7 +17,7 @@ export class ParameterDeclarationArray {
         {
           actual: undefined,
           expected: true,
-          showDiff: false
+          showDiff: false,
         },
         this.parameter
       );
@@ -35,7 +35,7 @@ export class ParameterDeclarationArray {
         {
           actual,
           expected,
-          showDiff: false
+          showDiff: false,
         },
         this.length
       );
@@ -43,7 +43,7 @@ export class ParameterDeclarationArray {
     return this;
   }
 
-  *[Symbol.iterator]() {
+  *[Symbol.iterator](): IterableIterator<ParameterDeclaration> {
     let idx = 0;
     while (this._parameters[idx]) {
       yield new ParameterDeclaration(this._parameters[idx]);
