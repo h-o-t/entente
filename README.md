@@ -1,5 +1,8 @@
 # entente
 
+![CI](https://github.com/h-o-t/entente/workflows/CI/badge.svg)
+![npm version](https://img.shields.io/npm/v/entente)
+
 A convention testing framework for JavaScript/TypeScript.
 
 **This project is heavily under development and APIs are far from stable. Use at
@@ -35,7 +38,7 @@ const project = createProject("../src/index.js");
 
 const views = project
   .getSourceFiles()
-  .filter(sf => sf.getFilePath().match(/View\.js$/));
+  .filter((sf) => sf.getFilePath().match(/View\.js$/));
 
 for (const view in views) {
   test({
@@ -45,13 +48,9 @@ for (const view in views) {
         .exports.namedExport("render")
         .length(1)
         .declarations[0].isFunctionLike();
-      renderFn.parameters
-        .length(1)
-        .paramater(0)
-        .isObject()
-        .isNotOptional();
+      renderFn.parameters.length(1).paramater(0).isObject().isNotOptional();
       renderFn.return.isObject();
-    }
+    },
   });
 }
 ```
@@ -124,8 +123,8 @@ which contains a result for each test.
 ## Using with Jest
 
 In order to utilise convention tests with Jest (and most other test harnesses)
-you do not need to utilise the included test harness/runner.  Only the project
-creation and assertion APIs need to be included.  For example to test that
+you do not need to utilise the included test harness/runner. Only the project
+creation and assertion APIs need to be included. For example to test that
 every source file has a default export, you would do something like this:
 
 ```ts
@@ -136,9 +135,9 @@ describe("source file has default export", () => {
   const sourceFiles = project.getSourceFiles();
   for (const sourceFile of sourceFiles) {
     it(`for: ${sourceFile.getFilePath()}`, () => {
-      const fn = assertSourceFile(sourceFile)
-        .exports
-        .default("the module has a default export");
+      const fn = assertSourceFile(sourceFile).exports.default(
+        "the module has a default export"
+      );
     });
   }
 });
@@ -208,7 +207,7 @@ for (const sf of project.getSourceFiles()) {
     name: `has default export - ${sf.getFilePath()}`,
     fn() {
       assertSourceFile(sf).exports.default("Expected a default export.");
-    }
+    },
   });
 }
 

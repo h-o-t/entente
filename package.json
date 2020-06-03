@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "author": "Kitson Kelly <me@kitsonkelly.com>",
   "license": "MIT",
+  "repository": "https://github.com/h-o-t/entente",
   "engines": {
     "node": ">=12.18.0"
   },
