@@ -1,7 +1,7 @@
 # entente
 
 ![CI](https://github.com/h-o-t/entente/workflows/CI/badge.svg)
-![npm version](https://img.shields.io/npm/v/entente)
+[![npm version](https://img.shields.io/npm/v/entente)](https://www.npmjs.com/package/entente)
 
 A convention testing framework for JavaScript/TypeScript.
 
