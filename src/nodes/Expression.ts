@@ -1,6 +1,7 @@
 import * as AssertionError from "assertion-error";
 import * as ts from "ts-morph";
 import { FunctionLikeDeclaration } from "./FunctionLikeDeclaration";
+import { ObjectLiteralExpression } from "./ObjectLiteralExpression";
 
 export class Expression {
   constructor(private _node: ts.Expression) {}
@@ -21,5 +22,17 @@ export class Expression {
       );
     }
     return new FunctionLikeDeclaration(this._node);
+  }
+
+  isObject(msg?: string): ObjectLiteralExpression {
+    if (!ts.Node.isObjectLiteralExpression(this._node)) {
+      const actual = this._node.getKindName();
+      throw new AssertionError(
+        msg ?? `Expected an object literal, actual ${actual}.`,
+        { actual, expected: "ObjectLiteralExpression", showDiff: false },
+        this.isObject
+      );
+    }
+    return new ObjectLiteralExpression(this._node);
   }
 }

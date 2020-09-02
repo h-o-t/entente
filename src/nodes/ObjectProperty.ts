@@ -1,12 +1,19 @@
 import * as AssertionError from "assertion-error";
 import * as ts from "ts-morph";
 import { Method } from "./Method";
-import { ClassProperty } from "./ClassProperty";
+import { Property } from "./Property";
 
-export class ClassMember {
-  constructor(private _node: ts.ClassInstanceMemberTypes) {}
+export type ObjectPropertyNode =
+  | ts.PropertyAssignment
+  | ts.ShorthandPropertyAssignment
+  | ts.MethodDeclaration
+  | ts.AccessorDeclaration;
 
-  /** Asserts that the member is a method, not a property. */
+export class ObjectProperty {
+  constructor(private _node: ObjectPropertyNode) {}
+
+  // isAccessor() {}
+
   isMethod(
     msg = `Expected class member to be a method, found property.`
   ): Method {
@@ -16,11 +23,11 @@ export class ClassMember {
     return new Method(this._node);
   }
 
-  /** Asserts that the member is method like.  For example properties which are
-   * initialized with arrow functions would be method like. */
-  isMethodLike(msg = `Expected class member to be a method like.`): this {
+  isMethodLike(msg = `Expected object property to be a method like.`): this {
     if (!ts.TypeGuards.isMethodDeclaration(this._node)) {
       if (
+        ts.TypeGuards.isPropertyAssignment(this._node) ||
+        ts.TypeGuards.isShorthandPropertyAssignment(this._node) ||
         ts.TypeGuards.isParameterDeclaration(this._node) ||
         ts.TypeGuards.isPropertyDeclaration(this._node)
       ) {
@@ -36,13 +43,16 @@ export class ClassMember {
     return this;
   }
 
-  /** Asserts that the member is a property. */
   isProperty(
-    msg = `Expected class member to be a property, found method.`
-  ): ClassProperty {
-    if (ts.TypeGuards.isMethodDeclaration(this._node)) {
+    msg = `Expected object property contain an initialized property.`
+  ): Property {
+    if (
+      ts.TypeGuards.isMethodDeclaration(this._node) ||
+      ts.TypeGuards.isGetAccessorDeclaration(this._node) ||
+      ts.TypeGuards.isSetAccessorDeclaration(this._node)
+    ) {
       throw new AssertionError(msg, undefined, this.isProperty);
     }
-    return new ClassProperty(this._node);
+    return new Property(this._node);
   }
 }
