@@ -1,5 +1,5 @@
 import * as ts from "ts-morph";
-import { SourceFile } from "./SourceFile";
+import { SourceFile } from "./SourceFile.ts";
 
 export class ImportDeclaration {
   constructor(private _node: ts.ImportDeclaration) {}

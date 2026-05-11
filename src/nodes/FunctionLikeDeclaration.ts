@@ -1,6 +1,6 @@
 import * as ts from "ts-morph";
-import { ParameterDeclarationArray } from "./ParameterDeclarationArray";
-import { Type } from "./Type";
+import { ParameterDeclarationArray } from "./ParameterDeclarationArray.ts";
+import { Type } from "./Type.ts";
 
 export class FunctionLikeDeclaration {
   private _parameterDeclarations?: ParameterDeclarationArray;
@@ -11,7 +11,7 @@ export class FunctionLikeDeclaration {
   get parameters(): ParameterDeclarationArray {
     if (!this._parameterDeclarations) {
       this._parameterDeclarations = new ParameterDeclarationArray(
-        this._node.getParameters()
+        this._node.getParameters(),
       );
     }
     return this._parameterDeclarations;

@@ -1,15 +1,15 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { ExportedDeclarationsArray } from "./ExportedDeclarationArray";
+import { ExportedDeclarationsArray } from "./ExportedDeclarationArray.ts";
 
 export class Exports {
   constructor(
-    private _declarations: ReadonlyMap<string, ts.ExportedDeclarations[]>
+    private _declarations: ReadonlyMap<string, ts.ExportedDeclarations[]>,
   ) {}
 
   /** Assert there is a default export from the module and return the export
    * declarations related to the default export. */
-  default(msg = "No default export."): ExportedDeclarationsArray {
+  default(msg: string = "No default export."): ExportedDeclarationsArray {
     return this.namedExport("default", msg);
   }
 
@@ -24,7 +24,7 @@ export class Exports {
    */
   namedExport(
     key: string | RegExp,
-    msg = `No export named "${key}".`
+    msg: string = `No export named "${key}".`,
   ): ExportedDeclarationsArray {
     let values: ts.ExportedDeclarations[] | undefined;
     if (typeof key === "string") {
@@ -36,7 +36,7 @@ export class Exports {
             expected: true,
             showDiff: false,
           },
-          this.namedExport
+          this.namedExport,
         );
       }
       values = this._declarations.get(key)!;
@@ -55,7 +55,7 @@ export class Exports {
             expected: true,
             showDiff: false,
           },
-          this.namedExport
+          this.namedExport,
         );
       }
     }

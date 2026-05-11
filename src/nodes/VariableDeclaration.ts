@@ -1,6 +1,6 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { Expression } from "./Expression";
+import { Expression } from "./Expression.ts";
 
 export class VariableDeclaration {
   constructor(private _node: ts.VariableDeclaration) {}
@@ -13,7 +13,7 @@ export class VariableDeclaration {
   /** Assert that the variable name matches the expected value. */
   name(
     expected: string | RegExp,
-    msg = `Expected name to match "${expected}"`
+    msg: string = `Expected name to match "${expected}"`,
   ): this {
     const actual = this._node.getName();
     if (!actual.match(expected)) {
@@ -24,7 +24,7 @@ export class VariableDeclaration {
           expected,
           showDiff: false,
         },
-        this.name
+        this.name,
       );
     }
     return this;

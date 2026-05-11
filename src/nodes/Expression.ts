@@ -1,6 +1,6 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { FunctionLikeDeclaration } from "./FunctionLikeDeclaration";
+import { FunctionLikeDeclaration } from "./FunctionLikeDeclaration.ts";
 
 export class Expression {
   constructor(private _node: ts.Expression) {}
@@ -17,7 +17,7 @@ export class Expression {
           expected: "FunctionLikeDeclaration",
           showDiff: false,
         },
-        this.isFunctionLike
+        this.isFunctionLike,
       );
     }
     return new FunctionLikeDeclaration(this._node);

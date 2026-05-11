@@ -1,28 +1,16 @@
 name: CI
-
 on:
   push:
     branches: [master]
   pull_request:
     branches: [master]
-
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup Node.js Enviornment
-        uses: actions/setup-node@v1.4.2
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
         with:
-          node-version: 12.18.0
-
-      - name: Install packages
-        run: yarn install
-
-      - name: Run tests
-        run: yarn test
-
-      - name: Run linting
-        run: yarn lint
+          deno-version: v2.x
+      - run: deno task check
+      - run: deno task test

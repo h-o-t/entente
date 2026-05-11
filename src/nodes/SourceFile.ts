@@ -1,8 +1,8 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { ClassDeclarations } from "./ClassDeclarations";
-import { Exports } from "./Exports";
-import { Imports } from "./Imports";
+import { ClassDeclarations } from "./ClassDeclarations.ts";
+import { Exports } from "./Exports.ts";
+import { Imports } from "./Imports.ts";
 
 export class SourceFile {
   constructor(private _node: ts.SourceFile) {}
@@ -38,7 +38,7 @@ export class SourceFile {
           expected,
           showDiff: false,
         },
-        this.filePath
+        this.filePath,
       );
     }
     return this;

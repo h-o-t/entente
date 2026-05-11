@@ -1,6 +1,6 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { TypeArray } from "./TypeArray";
+import { TypeArray } from "./TypeArray.ts";
 
 export class Properties {
   constructor(private _symbols: ts.Symbol[][]) {}
@@ -9,7 +9,7 @@ export class Properties {
    * object properties. */
   has(
     expected: string | RegExp,
-    msg = `Expected property to match "${expected}".`
+    msg: string = `Expected property to match "${expected}".`,
   ): this {
     for (const sa of this._symbols) {
       for (const s of sa) {

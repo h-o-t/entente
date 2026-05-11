@@ -1,4 +1,4 @@
-import { extname } from "path";
+import { extname } from "@std/path";
 import { CompilerOptions, Project } from "ts-morph";
 
 /** Returns `true` if it appears to be a configuration file, versus a JavaScript

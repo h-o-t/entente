@@ -1,4 +1,4 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
 
 export class ParameterDeclaration {
@@ -14,7 +14,7 @@ export class ParameterDeclaration {
           expected: "object",
           showDiff: false,
         },
-        this.isObject
+        this.isObject,
       );
     }
     return this;
@@ -30,7 +30,7 @@ export class ParameterDeclaration {
           expected: true,
           showDiff: false,
         },
-        this.isOptional
+        this.isOptional,
       );
     }
     return this;
@@ -46,7 +46,7 @@ export class ParameterDeclaration {
           expected: false,
           showDiff: false,
         },
-        this.isNotOptional
+        this.isNotOptional,
       );
     }
     return this;

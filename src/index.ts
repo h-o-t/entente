@@ -1,3 +1,2 @@
-export * from "./assert";
-export * from "./harness";
-export * from "./project";
+export * from "./assert.ts";
+export * from "./project.ts";

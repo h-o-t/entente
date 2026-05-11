@@ -1,6 +1,6 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { Expression } from "./Expression";
+import { Expression } from "./Expression.ts";
 
 export class ClassProperty {
   constructor(private _node: ts.ClassInstancePropertyTypes) {}
@@ -8,9 +8,9 @@ export class ClassProperty {
   /** Provides the initializer for the property if there is one. */
   get initializer(): Expression | undefined {
     let value: ts.Expression | undefined;
-    if (ts.TypeGuards.isParameterDeclaration(this._node)) {
+    if (ts.Node.isParameterDeclaration(this._node)) {
       value = this._node.getInitializer();
-    } else if (ts.TypeGuards.isPropertyDeclaration(this._node)) {
+    } else if (ts.Node.isPropertyDeclaration(this._node)) {
       value = this._node.getInitializer();
     }
     return value ? new Expression(value) : undefined;

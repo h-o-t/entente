@@ -1,6 +1,6 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { ImportDeclaration } from "./ImportDeclaration";
+import { ImportDeclaration } from "./ImportDeclaration.ts";
 
 export class Imports {
   constructor(private _declarations: ts.ImportDeclaration[]) {}
@@ -20,20 +20,16 @@ export class Imports {
   }
 
   get specifiers(): string[] {
-    return this._declarations.map((id) =>
-      id.getModuleSpecifier().getLiteralText()
-    );
+    return this._declarations.map((id) => id.getModuleSpecifier().getLiteralText());
   }
 
   includes(
     value: string | RegExp,
-    msg = `Expected an import to match "${String(value)}".`
+    msg: string = `Expected an import to match "${String(value)}".`,
   ): Imports {
     const includeArray = this._declarations.filter((id) => {
       const specifier = id.getModuleSpecifier().getLiteralText();
-      return typeof value === "string"
-        ? specifier.includes(value)
-        : specifier.match(value);
+      return typeof value === "string" ? specifier.includes(value) : specifier.match(value);
     });
     if (!includeArray.length) {
       throw new AssertionError(msg, undefined, this.includes);
@@ -51,7 +47,7 @@ export class Imports {
           expected,
           showDiff: true,
         },
-        this.length
+        this.length,
       );
     }
     return this;

@@ -1,6 +1,6 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { ParameterDeclaration } from "./ParameterDeclaration";
+import { ParameterDeclaration } from "./ParameterDeclaration.ts";
 
 export class ParameterDeclarationArray {
   constructor(private _parameters: ts.ParameterDeclaration[]) {}
@@ -9,7 +9,7 @@ export class ParameterDeclarationArray {
    * interface to the parameter. */
   parameter(
     idx: number,
-    msg = `Expected parameter to exist at index ${idx}.`
+    msg: string = `Expected parameter to exist at index ${idx}.`,
   ): ParameterDeclaration {
     if (!this._parameters[idx]) {
       throw new AssertionError(
@@ -19,7 +19,7 @@ export class ParameterDeclarationArray {
           expected: true,
           showDiff: false,
         },
-        this.parameter
+        this.parameter,
       );
     }
     return new ParameterDeclaration(this._parameters[idx]);
@@ -37,7 +37,7 @@ export class ParameterDeclarationArray {
           expected,
           showDiff: false,
         },
-        this.length
+        this.length,
       );
     }
     return this;

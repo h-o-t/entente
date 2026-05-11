@@ -14,7 +14,7 @@ export default class Foo {
 
   quux(context) {
     //
-  };
+  }
 
   quuux = () => {
     //

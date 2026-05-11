@@ -1,6 +1,6 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { Properties } from "./Properties";
+import { Properties } from "./Properties.ts";
 
 export class Type<T extends ts.ts.Type = ts.ts.Type> {
   private _properties?: Properties;
@@ -15,13 +15,13 @@ export class Type<T extends ts.ts.Type = ts.ts.Type> {
     if (!this._types.every((t) => t.isArray())) {
       const actual = this._type.getText();
       throw new AssertionError(
-        `Expected an array type, actual "${actual}".` ?? msg,
+        msg ?? `Expected an array type, actual "${actual}".`,
         {
           actual,
           expected: "Array<any>",
           showDiff: false,
         },
-        this.isArray
+        this.isArray,
       );
     }
     return this;
@@ -32,13 +32,13 @@ export class Type<T extends ts.ts.Type = ts.ts.Type> {
     if (!this._types.every((t) => t.isObject())) {
       const actual = this._type.getText();
       throw new AssertionError(
-        `Expected an object type, actual "${this._type.getText()}".` ?? msg,
+        msg ?? `Expected an object type, actual "${actual}".`,
         {
           actual,
           expected: "object",
           showDiff: false,
         },
-        this.isObject
+        this.isObject,
       );
     }
     return this;
@@ -48,7 +48,7 @@ export class Type<T extends ts.ts.Type = ts.ts.Type> {
   get properties(): Properties {
     if (!this._properties) {
       this._properties = new Properties(
-        this._types.map((t) => t.getProperties())
+        this._types.map((t) => t.getProperties()),
       );
     }
     return this._properties;

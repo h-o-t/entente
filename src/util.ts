@@ -1,4 +1,4 @@
-import { sep as DEFAULT_SEPARATOR } from "path";
+import { SEPARATOR as DEFAULT_SEPARATOR } from "@std/path/constants";
 
 /** Try to detect the path seperator from a set of paths. */
 function determineSeperator(paths: string[]): string {
@@ -14,7 +14,7 @@ function determineSeperator(paths: string[]): string {
 /** Determine the most common root path for a given set of paths. */
 export function commonPath(
   paths: string[],
-  sep = determineSeperator(paths)
+  sep = determineSeperator(paths),
 ): string {
   const [first = "", ...remaining] = paths;
   if (first === "" || remaining.length === 0) {

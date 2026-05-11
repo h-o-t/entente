@@ -1,10 +1,10 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { FunctionLikeDeclaration } from "./FunctionLikeDeclaration";
-import { VariableDeclaration } from "./VariableDeclaration";
+import { FunctionLikeDeclaration } from "./FunctionLikeDeclaration.ts";
+import { VariableDeclaration } from "./VariableDeclaration.ts";
 
 export class ExportedDeclaration<
-  T extends ts.ExportedDeclarations = ts.ExportedDeclarations
+  T extends ts.ExportedDeclarations = ts.ExportedDeclarations,
 > {
   constructor(private _declaration: T) {}
 
@@ -23,7 +23,7 @@ export class ExportedDeclaration<
           expected: "FunctionLikeDeclaration",
           showDiff: false,
         },
-        this.isFunctionLike
+        this.isFunctionLike,
       );
     }
     return new FunctionLikeDeclaration(this._declaration);
@@ -40,7 +40,7 @@ export class ExportedDeclaration<
           expected: "VariableDeclaration",
           showDiff: false,
         },
-        this.isVariableDeclaration
+        this.isVariableDeclaration,
       );
     }
     return new VariableDeclaration(this._declaration);

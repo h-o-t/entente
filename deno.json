@@ -1,0 +1,22 @@
+{
+  "name": "@higher-order-testing/entente",
+  "version": "0.6.0",
+  "exports": "./src/index.ts",
+  "publish": {
+    "exclude": [".claude/", ".vscode/", "Dockerfile", "tests/fixtures/"]
+  },
+  "imports": {
+    "ts-morph": "jsr:@ts-morph/ts-morph@^28.0.0",
+    "@std/path": "jsr:@std/path@^1.1.4",
+    "@std/assert": "jsr:@std/assert@^1.0.0"
+  },
+  "lint": {
+    "rules": { "tags": ["recommended"] },
+    "exclude": ["**/*.test.ts", "tests/fixtures/"]
+  },
+  "fmt": { "lineWidth": 120 },
+  "tasks": {
+    "test": "deno test --allow-read tests/deno_test.ts",
+    "check": "deno fmt --check . && deno lint . && deno check src/**/*.ts tests/deno_test.ts"
+  }
+}

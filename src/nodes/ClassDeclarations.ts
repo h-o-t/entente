@@ -1,6 +1,6 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { ClassDeclaration } from "./ClassDeclaration";
+import { ClassDeclaration } from "./ClassDeclaration.ts";
 
 export class ClassDeclarations {
   constructor(private _declarations: ts.ClassDeclaration[]) {}
@@ -14,16 +14,14 @@ export class ClassDeclarations {
    * value */
   includes(
     value: string | RegExp,
-    msg = `Expected a class to match "${String(value)}".`
+    msg: string = `Expected a class to match "${String(value)}".`,
   ): ClassDeclarations {
     const includeArray = this._declarations.filter((cd) => {
       const name = cd.getName();
       if (!name) {
         return false;
       }
-      return typeof value === "string"
-        ? name.includes(value)
-        : name.match(value);
+      return typeof value === "string" ? name.includes(value) : name.match(value);
     });
     if (!includeArray.length) {
       throw new AssertionError(msg, undefined, this.includes);
@@ -42,7 +40,7 @@ export class ClassDeclarations {
           expected,
           showDiff: true,
         },
-        this.length
+        this.length,
       );
     }
     return this;

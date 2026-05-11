@@ -1,4 +1,4 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
 
 export class TypeArray {
@@ -15,7 +15,7 @@ export class TypeArray {
           expected,
           showDiff: false,
         },
-        this.atLeast
+        this.atLeast,
       );
     }
     return this;
@@ -31,7 +31,7 @@ export class TypeArray {
           expected: "object",
           showDiff: false,
         },
-        this.isObject
+        this.isObject,
       );
     }
     return this;
@@ -47,7 +47,7 @@ export class TypeArray {
           expected: "string",
           showDiff: false,
         },
-        this.isString
+        this.isString,
       );
     }
     return this;

@@ -1,6 +1,6 @@
-import * as AssertionError from "assertion-error";
+import { AssertionError } from "../assertion_error.ts";
 import * as ts from "ts-morph";
-import { ExportedDeclaration } from "./ExportedDeclaration";
+import { ExportedDeclaration } from "./ExportedDeclaration.ts";
 
 export class ExportedDeclarationsArray {
   private _declarations?: ExportedDeclaration[];
@@ -11,7 +11,7 @@ export class ExportedDeclarationsArray {
   get declarations(): ExportedDeclaration[] {
     if (!this._declarations) {
       this._declarations = this._exportedDeclarations.map(
-        (ed) => new ExportedDeclaration(ed)
+        (ed) => new ExportedDeclaration(ed),
       );
     }
     return this._declarations;
@@ -29,7 +29,7 @@ export class ExportedDeclarationsArray {
           expected,
           showDiff: true,
         },
-        this.length
+        this.length,
       );
     }
     return this;
