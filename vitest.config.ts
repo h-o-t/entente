@@ -6,8 +6,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@std/path": "./tests/jest-shims/path.ts",
-      "@std/path/constants": "./tests/jest-shims/path-constants.ts",
+      "@std/path": "./tests/shims/path.ts",
+      "@std/path/constants": "./tests/shims/path-constants.ts",
     },
   },
 });
