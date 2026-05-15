@@ -1,5 +1,4 @@
-// @ts-nocheck: Jest globals are not available in Deno
-/** Example showing how to use entente with Jest. */
+/** Example showing how to use entente with Jest under Deno. */
 
 import { describe, it } from "@jest/globals";
 import { assertSourceFile, createProject } from "../src/index.ts";

@@ -1,0 +1,7 @@
+{
+  "name": "@higher-order-testing/entente",
+  "version": "0.6.0",
+  "devDependencies": {
+    "ts-morph": "^28.0.0"
+  }
+}
