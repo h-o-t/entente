@@ -1,5 +1,4 @@
-// @ts-nocheck: Vitest globals are not available in Deno
-/** Example showing how to use entente with Vitest. */
+/** Example showing how to use entente with Vitest under Deno. */
 
 import { describe, it } from "vitest";
 import { assertSourceFile, createProject } from "../src/index.ts";

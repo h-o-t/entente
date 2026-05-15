@@ -8,5 +8,5 @@ export default {
     "^@std/path$": "<rootDir>/tests/jest-shims/path.ts",
     "^@std/path/constants$": "<rootDir>/tests/jest-shims/path-constants.ts",
   },
-  testMatch: ["**/tests/**/*.test.ts"],
+  testMatch: ["**/tests/jest_compat.test.ts"],
 };
