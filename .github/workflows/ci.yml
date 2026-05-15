@@ -14,3 +14,5 @@ jobs:
           deno-version: v2.x
       - run: deno task check
       - run: deno task test
+      - run: deno task test:jest
+      - run: deno task test:vitest
