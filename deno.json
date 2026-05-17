@@ -19,7 +19,7 @@
   },
   "fmt": { "lineWidth": 120 },
   "tasks": {
-    "test": "deno test --allow-read tests/deno_test.ts",
+    "test": "deno test --allow-read tests/api.test.ts",
     "test:jest": "deno run -A npm:jest",
     "test:vitest": "deno run -A npm:vitest",
     "check": "deno fmt --check . && deno lint . && deno check src/**/*.ts tests/deno_test.ts"
