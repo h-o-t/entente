@@ -1,7 +1,7 @@
 {
   "name": "@higher-order-testing/entente",
   "nodeModulesDir": "auto",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "exports": {
     ".": "./src/index.ts",
     "./assert": "./src/assert.ts",
