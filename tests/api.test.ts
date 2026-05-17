@@ -1,5 +1,3 @@
-/// <reference lib="deno.ns" />
-
 import { assert, assertEquals, assertThrows } from "@std/assert";
 import * as ts from "ts-morph";
 import { assertSourceFile, createProject } from "../src/index.ts";
