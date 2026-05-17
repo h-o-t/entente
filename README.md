@@ -3,7 +3,7 @@
 ![CI](https://github.com/h-o-t/entente/workflows/CI/badge.svg)
 [![JSR](https://jsr.io/badges/@higher-order-testing/entente)](https://jsr.io/@higher-order-testing/entente)
 
-A convention testing library for JavaScript/TypeScript.
+A convention testing library for JavaScript/TypeScript with both assert-style and BDD-style fluent APIs.
 
 **This project is heavily under development and APIs are far from stable. Use at your own risk.**
 
@@ -45,6 +45,29 @@ for (const view of views) {
       .declarations[0].isFunctionLike();
     renderFn.parameters.length(1).parameter(0).isObject().isNotOptional();
     renderFn.return.isObject();
+  });
+}
+```
+
+The same test expressed with the BDD-style API:
+
+```ts
+import { createProject, expectSourceFile } from "jsr:@higher-order-testing/entente";
+
+const project = createProject("../src/index.js");
+
+const views = project
+  .getSourceFiles()
+  .filter((sf) => sf.getFilePath().match(/View\.js$/));
+
+for (const view of views) {
+  Deno.test(`view conventions - ${view.getFilePath()}`, () => {
+    const renderFn = expectSourceFile(view)
+      .exports.toHaveNamedExport("render")
+      .toHaveLength(1)
+      .declarations[0].toBeFunctionLike();
+    renderFn.parameters.toHaveLength(1).at(0).toBeObject().toBeRequired();
+    renderFn.return.toBeObject();
   });
 }
 ```
@@ -140,6 +163,58 @@ describe("convention tests", () => {
     });
   }
 });
+```
+
+## BDD-style API
+
+Entente also exposes a BDD-style API using `expect*` entry points that mirrors the assert-style but uses `to*` method
+names. The two APIs coexist and are fully interchangeable.
+
+```ts
+import { createProject, expectSourceFile } from "jsr:@higher-order-testing/entente";
+
+const project = createProject("./src/index.js");
+const sf = project.getSourceFiles()[0];
+
+expectSourceFile(sf)
+  .classes.toHaveLength(2)
+  .declarations[0]
+  .toHaveMember("render")
+  .toHaveLength(1)
+  .at(0)
+  .toBeMethod()
+  .parameters.at(0)
+  .toBeObject()
+  .toBeRequired();
+```
+
+### Entry points
+
+| Assert-style               | BDD-style                  | Input                        |
+| -------------------------- | -------------------------- | ---------------------------- |
+| `assertSourceFile(node)`   | `expectSourceFile(node)`   | `ts.SourceFile`              |
+| `assertClass(node)`        | `expectClass(node)`        | `ts.ClassDeclaration`        |
+| `assertFunctionLike(node)` | `expectFunctionLike(node)` | `ts.FunctionLikeDeclaration` |
+| `assertType(type)`         | `expectType(type)`         | `ts.Type`                    |
+
+### Naming conflict with Jest / Vitest
+
+Both Jest and Vitest export their own `expect` global. The BDD-style entry points are intentionally named
+`expectSourceFile`, `expectClass`, etc. to avoid clashing with test-runner globals. If you prefer a shorter alias in
+your test files:
+
+```ts
+import { expectSourceFile as expect } from "jsr:@higher-order-testing/entente";
+```
+
+### Subpath imports
+
+The package also exposes each module independently via subpath imports:
+
+```ts
+import { assertSourceFile } from "jsr:@higher-order-testing/entente/assert";
+import { expectSourceFile } from "jsr:@higher-order-testing/entente/expect";
+import { createProject } from "jsr:@higher-order-testing/entente/project";
 ```
 
 ## Projects

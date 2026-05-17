@@ -12,7 +12,7 @@ export function assert(cond: unknown, msg = "Failed assertion."): asserts cond {
   }
 }
 
-/** Returns an interfact to make assertions against a class. */
+/** Returns an interface to make assertions against a class. */
 export function assertClass(node: ts.ClassDeclaration): ClassDeclaration {
   return new ClassDeclaration(node);
 }
